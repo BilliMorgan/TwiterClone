@@ -1,13 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import registerServiceWorker from "./registerServiceWorker";
 import axios from "axios";
 
-axios.interceptors.request.use(request => {
-  console.log(request)
-})
+axios.interceptors.request.use(
+  (request) => {
+    console.log(request);
+    // editiding is posiible for request config;
+    return request;
+  },
+  (error) => {
+    console.log(error);
+    return Promise.reject(error);
+  }
+);
 
-ReactDOM.render( <App />, document.getElementById( 'root' ) );
+axios.interceptors.response.use(response => {
+  console.log(response)
+  return response
+  }, error => {
+    console.log(error);
+    return Promise.reject(error);
+  }
+);
+
+ReactDOM.render(<App />, document.getElementById("root"));
 registerServiceWorker();
