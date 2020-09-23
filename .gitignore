@@ -1,4 +1,4 @@
-node-modules
+/node-modules
 node_modules/.bin/acorn
 node_modules/.bin/ansi-html
 node_modules/.bin/atob
